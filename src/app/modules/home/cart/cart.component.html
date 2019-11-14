@@ -1,0 +1,101 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="bg-light py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mb-0">
+        <a routerLink="/home">Inicio</a>
+        <span class="mx-2 mb-0">/</span>
+        <strong class="text-black">Carrito</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="site-section">
+  <div class="container" *ngIf="productsCount > 0">
+    <div class="row mb-5">
+      <form class="col-md-12">
+        <div class="site-blocks-table">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th class="product-thumbnail">Imagen</th>
+                <th class="product-name">Producto</th>
+                <th class="product-quantity">Cantidad</th>
+                <th class="product-remove">Eliminar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of products">
+                <td class="product-thumbnail">
+                  <img [src]="product.url" alt="Image" class="img-fluid" />
+                </td>
+                <td class="product-name">
+                  <h2 class="h5 text-black">{{ product.name }}</h2>
+                </td>
+                <td>
+                  <div class="input-group mb-3" style="max-width: 120px; margin-left: auto;
+                  margin-right: auto;">
+                    <div class="input-group-prepend">
+                      <button (click)="onClickSubtractCountProduct(product)"
+                        class="btn btn-outline-primary js-btn-minus" type="button">
+                        -
+                      </button>
+                    </div>
+                    <input type="text" class="form-control text-center" [value]="product.count" placeholder=""
+                      aria-label="Example text with button addon" aria-describedby="button-addon1" disabled
+                      style="background-color: white;" />
+                    <div class="input-group-append">
+                      <button (click)="onClickAddCountProduct(product)" class="btn btn-outline-primary js-btn-plus"
+                        type="button">
+                        +
+                      </button>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <a (click)="onClickRemoveProduct(product)" class="btn btn-primary height-auto btn-sm cursor-pointer"
+                    style="color: white;">X</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <br />
+        <div class="form-group row">
+          <div class="col-md-12">
+            <label for="notes" class="text-black">Observaciones de tu cotización </label>
+            <textarea [(ngModel)]="notes" name="notes" id="notes" cols="30" rows="7" class="form-control"></textarea>
+          </div>
+        </div>
+        <br />
+        <div class="text-center" *ngIf="clientType===0">
+          <div class="text-center small" *ngIf="!validateSession()">Para poder enviar la cotización debes estar
+            registrado!</div> <br>
+          <a (click)="onClickSendQuotation()" style="color:white"
+            class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary cursor-pointer center-block mr-3">Realizar
+            cotización</a>
+          <a routerLink="/home" style="color:white"
+            class="buy-now btn btn-sm height-auto px-4 py-3 btn-info cursor-pointer center-block">Continuar
+            cotizando</a>
+
+        </div>
+
+      </form>
+    </div>
+  </div>
+  <div class="container text-center" *ngIf="productsCount === 0">
+    <label class="text-black h4">Oops! Aún no tienes productos en tú carrito</label>
+    <br />
+    <br />
+    <br />
+    <div class="col-md-4 offset-4">
+      <button routerLink="/home" class="btn btn-outline-primary btn-sm btn-block">
+        Continuar cotizando
+      </button>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

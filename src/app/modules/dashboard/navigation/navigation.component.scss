@@ -1,0 +1,15 @@
+@import "./../../../../assets/css-theme-dashboard/sb-admin-2";
+
+.site-logo a {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 2px solid white;
+    color: white !important;
+}
+
+.site-logo a:hover {
+    text-decoration: none;
+}

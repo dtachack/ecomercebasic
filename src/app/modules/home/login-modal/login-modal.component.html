@@ -1,0 +1,27 @@
+<a (click)="onClickClose()" class="btn btn-primary height-auto btn-sm cursor-pointer button-close"
+  style="color: white;">X</a>
+<div class="content-login">
+  <h2 class="text-black h4">
+    Iniciar Sesión
+  </h2>
+
+  <br />
+  <a (click)="onClickLoginGoogle()" class="btn btn-primary height-auto btn-sm cursor-pointer"
+    style="color: white; padding:1em; background-color:#db4a39; border-color:#db4a39;">
+    <i class="fab fa-google icon-button"></i> Iniciar sesión con Google</a>
+  <br /><br />
+  <a (click)="onClickLoginFaceBook()" class="btn btn-primary height-auto btn-sm cursor-pointer"
+    style="color: white; padding:1em; background-color:#3b5998; border-color:#3b5998;">
+    <i class="fab fa-facebook-f icon-button"></i> Iniciar sesión con Facebook</a>
+  <br /><br />
+  <a (click)="onClickLoginMicrosoft()" class="btn btn-primary height-auto btn-sm cursor-pointer"
+    style="color: white; padding:1em; background-color:#3b83bd; border-color:#3b83bd;">
+    <i class="fab fa-windows icon-button"></i> Iniciar sesión con Microsoft</a>
+  <br /><br />
+  <div class="text-center" style="font-size:12px;">
+    Si aún no cuentas con una cuenta te invitamos a
+    <p (click)="onClickRegister()" class="cursor-pointer" style="color:#007bff;">
+      Registrarte
+    </p>
+  </div>
+</div>

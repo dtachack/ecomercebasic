@@ -1,0 +1,87 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <div class="d-sm-flex align-items-center justify-content-between">
+      <h6 class="mb-0 font-weight-bold text-primary">Catalogo de productos</h6>
+
+
+      <a (click)="onClickCancelChanges()" [class.disabled]="productsToSave.length===0"
+        class="btn btn-sm btn-danger shadow-sm cursor-pointer" style="color: white;">
+        <i class="fas fa-redo-alt"></i> </a>
+
+      <a (click)="onClickSaveProductsPrice()" [class.disabled]="productsToSave.length===0"
+        class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm cursor-pointer" style="color: white;"><i
+          class="fas fa-save fa-sm text-white-50"></i> Guardar</a>
+
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="input-group mb-4">
+      <input [(ngModel)]="criteria" (keyup.enter)="getProductsCatalog()" type="text"
+        class="form-control bg-light border-0 small" placeholder="Buscar.." aria-label="Buscar.."
+        aria-describedby="basic-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-primary" (click)="getProductsCatalog()" type="button">
+          <i class="fas fa-search fa-sm"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="table-responsive mb-3">
+
+      <table class="table table-bordered dataTable">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Código</th>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <th class="text-center">
+              <i class="fas fa-check-circle text-success" *ngIf="product.idProviderPrice!==0"></i>
+              <i class="fas fa-minus-circle text-warning" *ngIf="product.idProviderPrice===0"></i>
+
+            </th>
+            <th>{{product.idProduct}}</th>
+            <th class="text-center"> <img style="height: 50px;" [src]="product.url"></th>
+            <th>{{product.name}} </th>
+            <th>
+              <input type="text" class="form-control bg-light border-0 small"
+                (ngModelChange)="changePrice($event,product)" [ngModel]="product.price">
+              <!-- <input type="text" class="form-control bg-light border-0 small" (blur)="transformAmount($event,product)"
+                [(value)]="product.priceFormat"> -->
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12 col-md-5">
+        <div class="dataTables_info" aria-live="polite">
+          Página {{pageActive}} de {{totalPages}} en total {{totalProducts}} productos
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-7">
+        <div class="dataTables_paginate paging_simple_numbers">
+          <ul class="pagination">
+            <li class="paginate_button page-item previous" [class.disabled]="pageActive==1">
+              <a class="page-link cursor-pointer" (click)="onClickSubtractPage()">&lt;</a></li>
+            <li class="paginate_button page-item" [class.active]="page===(pageActive).toString()"
+              *ngFor="let page of pages">
+              <a class="page-link cursor-pointer" (click)="onClickShowPage(page)">{{page}}</a></li>
+            <li class="paginate_button page-item next" [class.disabled]="pageActive===totalPages">
+              <a class="page-link cursor-pointer" (click)="onClickAddPage()">&gt;</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+</div>

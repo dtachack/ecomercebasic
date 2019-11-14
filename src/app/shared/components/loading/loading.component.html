@@ -1,0 +1,21 @@
+<div class="loading" *ngIf="isLoading" [style.background-color]="getBackgroundColor()">
+  <img *ngIf="showImage()" [style.width]="getWidth()" [src]="imageUrl"> <br><br>
+
+  <div class="lds-ripple" *ngIf="loadingType===0">
+    <div [style.border-color]="getColor()"></div>
+    <div [style.border-color]="getColor()"></div>
+  </div>
+
+  <div class="lds-dual-ring" *ngIf="loadingType===1">
+    <div class="lds-dual-ring-after" [style.border-color]="getBorderColorDualRing()"></div>
+  </div>
+
+
+  <div class="lds-ellipsis" *ngIf="loadingType===2">
+    <div [style.background]="getColor()"></div>
+    <div [style.background]="getColor()"></div>
+    <div [style.background]="getColor()"></div>
+    <div [style.background]="getColor()"></div>
+  </div>
+
+</div>

@@ -1,0 +1,50 @@
+<div class="site-navbar bg-white py-2">
+  <div class="search-wrap">
+    <div class="container">
+      <a href="#" class="search-close js-search-close">
+        <span class="icon-close2"></span>
+      </a>
+      <form action="#">
+        <input type="text" class="form-control" placeholder="Search keyword and hit enter..." />
+      </form>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="logo">
+        <div class="site-logo">
+          <a routerLink="/home" class="js-logo-clone">Turing</a>
+        </div>
+      </div>
+      <div class="main-nav d-none d-lg-block">
+        <nav class="site-navigation text-right text-md-center" role="navigation">
+          <ul class="site-menu js-clone-nav d-none d-lg-block">
+            <li>
+              <a routerLink="/home">Inicio</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="icons">
+        <a *ngIf="!validateSession" title="Iniciar sesión"  (click)="onClickLogin()" class="icons-btn d-inline-block cursor-pointer">
+          <span class="icon-user"></span>
+        </a>
+        <a *ngIf="validateSession" title="Adminsitración" routerLink="/dashboard/initial" class="icons-btn d-inline-block cursor-pointer">
+          <span class="icon-cogs"></span>
+        </a>
+        <a *ngIf="clientType===0"  title="Mi carrito" routerLink="/home/cart" class="icons-btn d-inline-block bag">
+          <span class="icon-shopping-bag"></span>
+          <span class="number" *ngIf="productsCount > 0">{{ productsCount }}
+          </span>
+        </a>
+        <a *ngIf="validateSession" title="Cerrar sesión" (click)="onClickLogout()" class="icons-btn d-inline-block cursor-pointer">
+          <span class="icon-power-off"></span>
+        </a>
+        <a class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none">
+          <span class="icon-menu"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

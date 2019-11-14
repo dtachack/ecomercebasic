@@ -1,0 +1,30 @@
+   <!-- Sidebar -->
+   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+     <!-- Sidebar - Brand -->
+     <a class="sidebar-brand d-flex align-items-center justify-content-center">
+       <div class="logo">
+         <div class="site-logo">
+           <a routerLink="/home" class="js-logo-clone">Turing</a>
+         </div>
+       </div>
+     </a>
+
+     <!-- Divider -->
+     <hr class="sidebar-divider my-0">
+
+     <!-- Nav Item - Dashboard -->
+     <li [class.active]="isComponentActive(item)" class="nav-item" *ngFor="let item of menu">
+       <a class="nav-link" [routerLink]="item.url" routerLinkActive="router-link-active">
+         <i [class]="item.icon"></i>
+         <span>{{item.name}}</span>
+       </a>
+     </li>
+
+     <!-- Sidebar Toggler (Sidebar) -->
+     <!-- <div class="text-center d-none d-md-inline">
+      <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div> -->
+
+   </ul>
+   <!-- End of Sidebar -->

@@ -1,0 +1,35 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+
+    <div class="d-sm-flex align-items-center justify-content-between">
+      <!-- <h1 class="h3 mb-0 text-gray-800">Listado de Productos</h1>  -->
+      <h6 class="mb-0 font-weight-bold text-primary">Listado de Productos</h6>
+      <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+          class="fas fa-plus fa-sm text-white-50"></i> Nuevo</a>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <th class="text-center"> <img style="width: 100px;" [src]="product.url"></th>
+            <th>{{product.name}}</th>
+            <!-- <th class="text-center">
+              <a class="btn btn-info btn-circle cursor-pointer" style="color:white; padding-left: 17px;">
+                <i class="fas fa-edit"></i>
+              </a>
+            </th> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

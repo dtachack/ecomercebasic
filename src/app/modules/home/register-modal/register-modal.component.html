@@ -1,0 +1,58 @@
+<a (click)="onClickClose()" class="btn btn-primary height-auto btn-sm cursor-pointer button-close"
+  style="color: white;">X</a>
+<div class="content-login">
+  <h2 class="text-black h4">
+    Registrate
+  </h2>
+
+  <br />
+  <div class="text-center small">Escoge la opción que se acomode a tu necesidad:</div> <br>
+  <div class="row">
+    <div class="col-sm-6">
+      <a (click)="onClickSelectClientType(0)" [ngClass]="{
+          'btn-success':clientTypeSelected===0,
+          'btn-primary':clientTypeSelected!==0
+        }" style="color:white; height: 110px; width: 100%;"
+        class="buy-now btn btn-sm height-auto px-4 py-3  cursor-pointer center-block">
+        <i class="fas fa-shopping-cart"></i> Cliente
+        <br><br>
+        <div class="text-center small">Selecciona los productos de tu agrado y solicita una cotización.</div>
+      </a>
+
+    </div>
+    <div class="col-sm-6">
+      <a (click)="onClickSelectClientType(1)" [ngClass]="{
+          'btn-success':clientTypeSelected===1,
+          'btn-info':clientTypeSelected!==1
+        }" style="color:white; height: 110px; width: 100%;"
+        class="buy-now btn btn-sm height-auto px-4 py-3 cursor-pointer center-block">
+        <i class="fas fa-briefcase"></i> Proveedor
+        <br><br>
+        <div class="text-center small">Comienza a ofertar y vende tus productos.</div>
+      </a>
+    </div>
+  </div>
+  <br>
+  <div *ngIf="clientTypeSelected!==null">
+    <div class="text-center small">¿Con que medio te quieres registrar?</div> <br>
+    <br>
+    <div class="row">
+      <div class="col-sm-4">
+        <a (click)="onClickRegisterGoogle()" class="btn btn-primary height-auto btn-sm cursor-pointer text-center"
+          style="color: white; padding:1em; background-color:#db4a39; border-color:#db4a39;">
+          <i class="fab fa-google icon-button"></i>Google</a>
+      </div>
+      <div class="col-sm-4">
+        <a (click)="onClickRegisterFaceBook()" class="btn btn-primary height-auto btn-sm cursor-pointer text-center"
+          style="color: white; padding:1em; background-color:#3b5998; border-color:#3b5998;">
+          <i class="fab fa-facebook-f icon-button"></i> Facebook</a>
+      </div>
+      <div class="col-sm-4">
+        <a (click)="onClickRegisterMicrosoft()" class="btn btn-primary height-auto btn-sm cursor-pointer text-center"
+          style="color: white; padding:1em; background-color:#3b83bd; border-color:#3b83bd;">
+          <i class="fab fa-windows icon-button center-block"></i> Microsoft</a>
+      </div>
+    </div>
+  </div>
+
+</div>

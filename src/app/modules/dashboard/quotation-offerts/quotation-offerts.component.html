@@ -1,0 +1,61 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <div class="d-sm-flex align-items-center justify-content-between">
+      <h6 class="mb-0 font-weight-bold text-primary">Oferta de los productos</h6>
+      <a (click)="onClickClose()"
+        class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm cursor-pointer" style="color: white;">
+        <i class="fas fa-times-circle"></i>
+      </a>
+
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive mb-3">
+
+      <table class="table table-bordered dataTable">
+        <thead>
+          <tr>
+            <th>Proveedor</th>
+            <th>Precio</th>
+            <th>Fecha de Validez</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let offert of offerts">
+            <th class="text-center">
+              {{offert.name}}</th>
+            <th>{{offert.price}} </th>
+            <th>
+              {{offert.validity|date}}
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12 col-md-5">
+        <div class="dataTables_info" aria-live="polite">
+          Página {{pageActive}} de {{totalPages}} en total {{totalProducts}} productos
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-7">
+        <div class="dataTables_paginate paging_simple_numbers">
+          <ul class="pagination">
+            <li class="paginate_button page-item previous" [class.disabled]="pageActive==1">
+              <a class="page-link cursor-pointer" (click)="onClickSubtractPage()">&lt;</a></li>
+            <li class="paginate_button page-item" [class.active]="page===(pageActive).toString()"
+              *ngFor="let page of pages">
+              <a class="page-link cursor-pointer" (click)="onClickShowPage(page)">{{page}}</a></li>
+            <li class="paginate_button page-item next" [class.disabled]="pageActive===totalPages">
+              <a class="page-link cursor-pointer" (click)="onClickAddPage()">&gt;</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+</div>

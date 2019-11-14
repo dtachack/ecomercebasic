@@ -1,0 +1,88 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+
+    <div class="d-sm-flex align-items-center justify-content-between">
+      <h6 class="mb-0 font-weight-bold text-primary">Información de la cotización</h6>
+      <a class="btn btn-success btn-icon-split" *ngIf="quotation.active">
+        <span class="icon text-white-50">
+          <i class="fas fa-check"></i>
+        </span>
+        <span class="text text-white">Activa</span>
+      </a>
+
+      <a class="btn btn-warning btn-icon-split" *ngIf="!quotation.active">
+        <span class="icon text-white-50">
+          <i class="fas fa-check"></i>
+        </span>
+        <span class="text text-white">Expirada</span>
+      </a>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-2">
+        <p><b class="text-primary">No:</b> {{quotation.idQuote}}</p>
+      </div>
+      <div class="col-sm-4">
+        <p><b class="text-primary">Fecha de cotización:</b> {{quotation.date|date}}</p>
+      </div>
+      <div class="col-sm-4">
+        <p><b class="text-primary">Fecha de expiración:</b> {{quotation.expiration|date}}</p>
+      </div>
+    </div>
+    <div>
+      <p><b class="text-primary">Observaciones:</b> {{quotation.notes}}</p>
+    </div>
+    <div class="table-responsive mb-3">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary mb-2">Productos de la cotización</h6>
+      </div>
+
+      <table class="table table-bordered dataTable">
+        <thead>
+          <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Ofertas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <th class="text-center"> <img style="height: 50px;" [src]="product.url"></th>
+            <th>{{product.name}} </th>
+            <th class="text-center">{{product.quantity}}</th>
+            <th>
+              <button (click)="onClickViewOfferts(product)" class="btn btn-sm btn-primary shadow-sm cursor-pointer"
+                [disabled]="product.providerCount===0">
+                <i class="fas fa-eye"></i>
+                {{product.providerCount}}
+              </button>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12 col-md-5">
+        <div class="dataTables_info" aria-live="polite">
+          Página {{pageActive}} de {{totalPages}} en total {{totalProducts}} productos
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-7">
+        <div class="dataTables_paginate paging_simple_numbers">
+          <ul class="pagination">
+            <li class="paginate_button page-item previous" [class.disabled]="pageActive==1">
+              <a class="page-link cursor-pointer" (click)="onClickSubtractPage()">&lt;</a></li>
+            <li class="paginate_button page-item" [class.active]="page===(pageActive).toString()"
+              *ngFor="let page of pages">
+              <a class="page-link cursor-pointer" (click)="onClickShowPage(page)">{{page}}</a></li>
+            <li class="paginate_button page-item next" [class.disabled]="pageActive===totalPages">
+              <a class="page-link cursor-pointer" (click)="onClickAddPage()">&gt;</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>

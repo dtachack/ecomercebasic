@@ -1,0 +1,122 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Información personal</h6>
+  </div>
+  <div class="card-body">
+
+    <div *ngIf="clientType===0">
+      <div class="site-section mb-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 offset-2">
+
+              <form [formGroup]="formClientGroup">
+                <div class="p-lg-5">
+                  <div class="form-group row">
+                    <div class="col-md-12">
+                      <label for="name" class="text-black">Nombre(s) y Apellidos <span
+                          class="text-danger">*</span></label>
+                      <input type="text" class="form-control" formControlName="name">
+                    </div>
+                  </div>
+                  <div class="form-group row mb-4">
+                    <div class="col-md-12">
+                      <label for="email" class="text-black">Email <span class="text-danger">*</span></label>
+                      <input type="email" class="form-control" formControlName="email">
+                    </div>
+                  </div>
+                  <div class="form-group row mb-4">
+                    <div class="col-md-12">
+                      <label for="phone" class="text-black">Telefono</label>
+                      <input type="text" class="form-control" formControlName="phone">
+                    </div>
+                  </div>
+                  <div class="form-group row mb-4">
+                    <div class="col-md-12">
+                      <label for="address" class="text-black">Dirección</label>
+                      <input type="text" class="form-control" formControlName="address">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-lg-12">
+                      <input type="submit" (click)="onClickUpdateClient()" [disabled]="formClientGroup.invalid"
+                        class="btn btn-primary btn-lg btn-block" value="Actualizar Información">
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div *ngIf="clientType===1">
+
+      <div class="site-section mb-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 offset-2">
+
+              <form [formGroup]="formProviderGroup">
+                <div class="p-lg-5">
+                  <div class="form-group row">
+                    <div class="col-md-12">
+                      <label for="name" class="text-black">Nombre(s) y Apellidos (Persona de contacto) <span
+                          class="text-danger">*</span></label>
+                      <input type="text" class="form-control" formControlName="name">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-md-12">
+                      <label for="nameCompany" class="text-black">Nombre de la Empresa<span
+                          class="text-danger">*</span></label>
+                      <input type="text" class="form-control" formControlName="nameCompany">
+                    </div>
+                  </div>
+                  <div class="form-group row mb-4">
+                    <div class="col-md-12">
+                      <label for="email" class="text-black">Email <span class="text-danger">*</span></label>
+                      <input type="email" class="form-control" formControlName="email">
+                    </div>
+                  </div>
+                  <div class="form-group row mb-4">
+                    <div class="col-md-12">
+                      <label for="phone" class="text-black">Telefono</label>
+                      <input type="text" class="form-control" formControlName="phone">
+                    </div>
+                  </div>
+                  <div class="form-group row mb-4">
+                    <div class="col-md-12">
+                      <label for="address" class="text-black">Dirección</label>
+                      <input type="text" class="form-control" formControlName="address">
+                    </div>
+                  </div>
+                  <div class="form-group row mb-4">
+                    <div class="col-md-12">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="isSystem" formControlName="isSystem">
+                        <label class="form-check-label" for="isSystem">
+                          Administrar productos con TURING
+                        </label>
+                      </div>
+                      <div class="text-center" style="font-size: 10px;">
+                        Puedes administrar las ofertas de tus productos con nuestra plataforma si no cuentas con alguna.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-lg-12">
+                      <input type="submit" (click)="onClickUpdateProvider()" [disabled]="formProviderGroup.invalid"
+                        class="btn btn-primary btn-lg btn-block" value="Actualizar Información">
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
